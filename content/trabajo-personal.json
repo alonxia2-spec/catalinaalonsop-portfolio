@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "image": "/img/uploads/15082026-_mg_4424-editar-3.jpg",
+      "image": "/img/uploads/img20260204_14402221.jpg",
       "caption": "O que non é lenda, invéntamolo · 2026",
       "size": "grande"
     },
@@ -24,6 +24,10 @@
       "image": "/img/uploads/_mg_4229.jpg",
       "caption": "Serie personal",
       "size": "normal"
+    },
+    {
+      "size": "normal",
+      "image": "/img/uploads/_mg_4069.jpg"
     }
   ]
 }
