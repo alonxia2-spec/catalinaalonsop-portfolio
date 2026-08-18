@@ -24,7 +24,7 @@ collections:
         label: "Nombre, portada y contacto"
         name: "settings"
         fields:
-          - { label: "Tu nombre", name: "name", widget: "string" }
+          - { label: "Nombre / firma", name: "name", widget: "string" }
           - { label: "Título de portada", name: "hero_title", widget: "text" }
           - { label: "Subtítulo de portada", name: "hero_subtitle", widget: "text" }
           - { label: "Ubicación", name: "location", widget: "string" }
@@ -33,23 +33,23 @@ collections:
           - { label: "Email de contacto", name: "email", widget: "string" }
           - { label: "Instagram", name: "instagram", widget: "string" }
 
-  - name: "about"
-    label: "Sobre mí"
+  - name: "biografia"
+    label: "Biografía"
     files:
-      - file: "content/about.json"
-        label: "Sobre mí"
-        name: "about"
+      - file: "content/biografia.json"
+        label: "Biografía"
+        name: "biografia"
         fields:
           - { label: "Foto de perfil", name: "photo", widget: "image", required: false }
           - { label: "Texto", name: "text", widget: "text" }
           - { label: "Firma", name: "signature", widget: "string" }
 
-  - name: "gallery"
-    label: "Galería"
+  - name: "trabajo-personal"
+    label: "Trabajo personal"
     files:
-      - file: "content/gallery.json"
-        label: "Fotos de la galería"
-        name: "gallery"
+      - file: "content/trabajo-personal.json"
+        label: "Fotos de trabajo personal"
+        name: "trabajo-personal"
         fields:
           - label: "Fotos"
             name: "items"
@@ -63,18 +63,38 @@ collections:
                 options: ["normal", "grande"]
                 default: "normal"
 
-  - name: "blog"
-    label: "Blog"
+  - name: "comisiones"
+    label: "Comisiones"
     files:
-      - file: "content/blog.json"
-        label: "Entradas del blog"
-        name: "blog"
+      - file: "content/comisiones.json"
+        label: "Fotos de comisiones / editorial"
+        name: "comisiones"
         fields:
-          - label: "Entradas"
-            name: "posts"
+          - label: "Fotos"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Foto", name: "image", widget: "image" }
+              - { label: "Descripción corta", name: "caption", widget: "string", required: false }
+              - label: "Tamaño en la cuadrícula"
+                name: "size"
+                widget: "select"
+                options: ["normal", "grande"]
+                default: "normal"
+
+  - name: "exposiciones"
+    label: "Exposiciones"
+    files:
+      - file: "content/exposiciones.json"
+        label: "Lista de exposiciones"
+        name: "exposiciones"
+        fields:
+          - label: "Exposiciones"
+            name: "items"
             widget: "list"
             fields:
               - { label: "Imagen", name: "image", widget: "image", required: false }
-              - { label: "Fecha", name: "date", widget: "string" }
-              - { label: "Título", name: "title", widget: "string" }
-              - { label: "Resumen", name: "excerpt", widget: "text" }
+              - { label: "Título de la exposición", name: "title", widget: "string" }
+              - { label: "Sala / lugar", name: "place", widget: "string" }
+              - { label: "Fecha", name: "dates", widget: "string" }
+              - { label: "Descripción", name: "description", widget: "text", required: false }
