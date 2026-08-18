@@ -1,6 +1,13 @@
+# Use DecapBridge PKCE auth (required)
 backend:
   name: git-gateway
+  repo: alonxia2-spec/catalinaalonsop-portfolio
   branch: main
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/37db884a-1f54-4dfc-bab2-fc01ce65df25/pkce
+  auth_token_endpoint: /sites/37db884a-1f54-4dfc-bab2-fc01ce65df25/token
+  gateway_url: https://gateway.decapbridge.com
 
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
