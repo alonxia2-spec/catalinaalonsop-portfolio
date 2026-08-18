@@ -1,8 +1,24 @@
 {
   "items": [
-    { "image": "", "caption": "Editorial de moda", "size": "grande" },
-    { "image": "", "caption": "Encargo para revista", "size": "normal" },
-    { "image": "", "caption": "Encargo para revista", "size": "normal" },
-    { "image": "", "caption": "Encargo privado", "size": "normal" }
+    {
+      "image": "/img/uploads/_mg_4312.jpg",
+      "caption": "Editorial de moda",
+      "size": "normal"
+    },
+    {
+      "image": "/img/uploads/_mg_4229.jpg",
+      "caption": "Encargo para revista",
+      "size": "normal"
+    },
+    {
+      "image": "/img/uploads/15082026-_mg_4439.jpg",
+      "caption": "Encargo para revista",
+      "size": "normal"
+    },
+    {
+      "image": "/img/uploads/_mg_4069.jpg",
+      "caption": "Encargo privado",
+      "size": "normal"
+    }
   ]
 }
