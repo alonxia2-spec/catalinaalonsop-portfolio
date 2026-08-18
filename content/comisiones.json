@@ -1,0 +1,8 @@
+{
+  "items": [
+    { "image": "", "caption": "Editorial de moda", "size": "grande" },
+    { "image": "", "caption": "Encargo para revista", "size": "normal" },
+    { "image": "", "caption": "Encargo para revista", "size": "normal" },
+    { "image": "", "caption": "Encargo privado", "size": "normal" }
+  ]
+}
