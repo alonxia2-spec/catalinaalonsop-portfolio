@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fotografía — Portfolio</title>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --ink:#15130f;
+    --ink-soft:#66604f;
+    --line:#e7e2d6;
+    --stone:#a79c85;
+    --sand:#f6f3ec;
+    --accent:#5c6b4f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .brand{font-family:'Fraunces',serif;font-size:20px;}
+  .navlinks{display:flex;gap:36px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);}
+  .navlinks a:hover{color:var(--ink);}
+
+  .hero{padding:120px 0 90px;border-bottom:1px solid var(--line);}
+  .hero .eyebrow{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);margin-bottom:22px;}
+  .hero h1{font-size:clamp(38px,7vw,80px);line-height:1.04;max-width:15ch;}
+  .hero p{margin-top:26px;max-width:44ch;color:var(--ink-soft);font-size:17px;line-height:1.6;}
+  .hero-meta{margin-top:52px;display:flex;gap:64px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px;}
+  .hero-meta div{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--stone);}
+  .hero-meta strong{display:block;font-family:'Fraunces',serif;font-size:16px;color:var(--ink);text-transform:none;letter-spacing:0;margin-top:6px;}
+
+  .section-head{padding:80px 0 36px;display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);margin-bottom:44px;}
+  .section-head h2{font-size:32px;}
+  .section-head span{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--stone);}
+
+  .gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;padding-bottom:100px;}
+  .frame{position:relative;overflow:hidden;background:var(--sand);aspect-ratio:4/5;cursor:pointer;grid-column:span 2;}
+  .frame.grande{grid-column:span 4;aspect-ratio:16/10;}
+  .frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+  .frame:hover img{transform:scale(1.04);}
+  .frame .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--stone);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;text-align:center;padding:16px;}
+  .cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(0deg,rgba(0,0,0,0.55),transparent);color:#fff;font-size:12px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s;}
+  .frame:hover .cap{opacity:1;transform:translateY(0);}
+
+  .about{border-top:1px solid var(--line);padding:90px 0;display:grid;grid-template-columns:1fr 1.3fr;gap:80px;}
+  .about .ph-square{aspect-ratio:4/5;background:var(--sand);display:flex;align-items:center;justify-content:center;color:var(--stone);font-size:12px;text-transform:uppercase;overflow:hidden;}
+  .about .ph-square img{width:100%;height:100%;object-fit:cover;}
+  .about h2{font-size:32px;margin-bottom:20px;}
+  .about p{color:var(--ink-soft);line-height:1.75;font-size:16px;margin-bottom:16px;max-width:52ch;white-space:pre-line;}
+  .about .sign{margin-top:24px;font-family:'Fraunces',serif;font-style:italic;font-size:20px;}
+
+  .blog{border-top:1px solid var(--line);padding:90px 0;}
+  .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
+  .post .ph-wide{aspect-ratio:5/4;background:var(--sand);margin-bottom:18px;display:flex;align-items:center;justify-content:center;color:var(--stone);font-size:11px;text-transform:uppercase;overflow:hidden;}
+  .post .ph-wide img{width:100%;height:100%;object-fit:cover;}
+  .post .date{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--stone);margin-bottom:8px;}
+  .post h3{font-size:19px;margin-bottom:8px;font-weight:500;}
+  .post p{color:var(--ink-soft);font-size:14px;line-height:1.6;}
+
+  .contact{border-top:1px solid var(--line);padding:100px 0 60px;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+  .contact h2{font-size:36px;margin-bottom:18px;max-width:12ch;}
+  .contact p{color:var(--ink-soft);margin-bottom:32px;max-width:36ch;line-height:1.6;}
+  .contact-links{display:flex;flex-direction:column;gap:14px;}
+  .contact-links a{font-size:15px;border-bottom:1px solid var(--line);padding-bottom:14px;display:flex;justify-content:space-between;}
+  .contact-links a:hover{color:var(--accent);}
+
+  form{display:flex;flex-direction:column;gap:20px;}
+  label{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--stone);margin-bottom:8px;display:block;}
+  input,textarea{width:100%;border:none;border-bottom:1px solid var(--line);background:transparent;padding:10px 0;font-family:'Inter',sans-serif;font-size:15px;color:var(--ink);outline:none;}
+  input:focus,textarea:focus{border-bottom-color:var(--ink);}
+  button{margin-top:12px;align-self:flex-start;background:var(--ink);color:#fff;border:none;padding:14px 30px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;}
+  button:hover{opacity:.85;}
+
+  footer{border-top:1px solid var(--line);padding:32px 0;display:flex;justify-content:space-between;font-size:12px;color:var(--stone);}
+  footer a{border-bottom:1px solid var(--line);}
+
+  .lightbox{position:fixed;inset:0;background:rgba(21,19,15,0.92);display:none;align-items:center;justify-content:center;z-index:100;padding:40px;cursor:zoom-out;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:100%;max-height:100%;object-fit:contain;}
+
+  @media(max-width:860px){
+    .navlinks{display:none;}
+    .about,.contact-grid{grid-template-columns:1fr;gap:40px;}
+    .posts{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .frame{grid-column:span 1 !important;}
+    .hero{padding:80px 0 60px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand" id="brand">Cargando…</div>
+    <div class="navlinks">
+      <a href="#trabajo">Trabajo</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#blog">Blog</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Fotografía — Portfolio</div>
+    <h1 id="hero-title"></h1>
+    <p id="hero-subtitle"></p>
+    <div class="hero-meta">
+      <div>Basada en<strong id="meta-location"></strong></div>
+      <div>Disponible para<strong id="meta-availability"></strong></div>
+      <div>Formato<strong id="meta-formats"></strong></div>
+    </div>
+  </div>
+</header>
+
+<section id="trabajo" class="wrap">
+  <div class="section-head"><h2>Trabajo reciente</h2><span id="gallery-count"></span></div>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<section id="sobre-mi" class="wrap about">
+  <div class="ph-square" id="about-photo"><span>Foto de perfil</span></div>
+  <div>
+    <h2>Sobre mí</h2>
+    <p id="about-text"></p>
+    <div class="sign" id="about-sign"></div>
+  </div>
+</section>
+
+<section id="blog" class="wrap blog">
+  <div class="section-head"><h2>Blog</h2><span>Notas y detrás de cámaras</span></div>
+  <div class="posts" id="posts"></div>
+</section>
+
+<section id="contacto" class="wrap contact">
+  <div class="contact-grid">
+    <div>
+      <h2>Hablemos de tu próxima sesión.</h2>
+      <p>Respondo en 1–2 días. Cuéntame qué tienes en mente y buscamos fecha.</p>
+      <div class="contact-links">
+        <a id="link-email" href="#"><span>Email</span><span id="text-email"></span></a>
+        <a id="link-instagram" href="#"><span>Instagram</span><span id="text-instagram"></span></a>
+        <a href="#"><span>Ubicación</span><span id="text-location"></span></a>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault();alert('Formulario de ejemplo — conéctalo a tu email o a un servicio como Formspree.');">
+      <div><label>Nombre</label><input type="text" required></div>
+      <div><label>Email</label><input type="email" required></div>
+      <div><label>Cuéntame sobre tu proyecto</label><textarea rows="4" required></textarea></div>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div id="footer-name">© 2026</div>
+  <a href="/admin/">Editar contenido</a>
+</footer>
+
+<div class="lightbox" id="lightbox"><img id="lightbox-img" src=""></div>
+
+<script>
+async function loadJSON(path){
+  const res = await fetch(path + '?v=' + Date.now());
+  if(!res.ok) throw new Error('No se pudo cargar ' + path);
+  return res.json();
+}
+
+function frameHTML(item){
+  const sizeClass = item.size === 'grande' ? 'grande' : '';
+  const inner = item.image
+    ? `<img src="${item.image}" alt="${item.caption || ''}">`
+    : `<div class="ph">Sin foto todavía — súbela desde /admin</div>`;
+  return `<div class="frame ${sizeClass}" ${item.image ? `onclick="openLightbox('${item.image}')"` : ''}>
+    ${inner}
+    ${item.caption ? `<div class="cap">${item.caption}</div>` : ''}
+  </div>`;
+}
+
+function postHTML(post){
+  const img = post.image
+    ? `<img src="${post.image}" alt="${post.title || ''}">`
+    : 'Imagen del post';
+  return `<div class="post">
+    <div class="ph-wide">${img}</div>
+    <div class="date">${post.date || ''}</div>
+    <h3>${post.title || ''}</h3>
+    <p>${post.excerpt || ''}</p>
+  </div>`;
+}
+
+function openLightbox(src){
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+document.getElementById('lightbox').addEventListener('click', () => {
+  document.getElementById('lightbox').classList.remove('open');
+});
+
+async function init(){
+  try{
+    const settings = await loadJSON('/content/settings.json');
+    document.getElementById('brand').textContent = settings.name || '';
+    document.getElementById('footer-name').textContent = '© 2026 ' + (settings.name || '');
+    document.getElementById('hero-title').textContent = settings.hero_title || '';
+    document.getElementById('hero-subtitle').textContent = settings.hero_subtitle || '';
+    document.getElementById('meta-location').textContent = settings.location || '';
+    document.getElementById('meta-availability').textContent = settings.availability || '';
+    document.getElementById('meta-formats').textContent = settings.formats || '';
+    document.getElementById('text-email').textContent = settings.email || '';
+    document.getElementById('link-email').href = 'mailto:' + (settings.email || '');
+    document.getElementById('text-instagram').textContent = settings.instagram || '';
+    document.getElementById('text-location').textContent = settings.location || '';
+  }catch(e){ console.error(e); }
+
+  try{
+    const about = await loadJSON('/content/about.json');
+    document.getElementById('about-text').textContent = about.text || '';
+    document.getElementById('about-sign').textContent = about.signature || '';
+    if(about.photo){
+      document.getElementById('about-photo').innerHTML = `<img src="${about.photo}" style="width:100%;height:100%;object-fit:cover;">`;
+    }
+  }catch(e){ console.error(e); }
+
+  try{
+    const gallery = await loadJSON('/content/gallery.json');
+    const items = gallery.items || [];
+    document.getElementById('gallery').innerHTML = items.map(frameHTML).join('');
+    document.getElementById('gallery-count').textContent = items.length + ' piezas';
+  }catch(e){ console.error(e); }
+
+  try{
+    const blog = await loadJSON('/content/blog.json');
+    const posts = blog.posts || [];
+    document.getElementById('posts').innerHTML = posts.map(postHTML).join('');
+  }catch(e){ console.error(e); }
+}
+init();
+</script>
+
+</body>
+</html>

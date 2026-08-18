@@ -1,0 +1,73 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+
+publish_mode: simple
+
+locale: "es"
+
+collections:
+  - name: "settings"
+    label: "Datos generales"
+    files:
+      - file: "content/settings.json"
+        label: "Nombre, portada y contacto"
+        name: "settings"
+        fields:
+          - { label: "Tu nombre", name: "name", widget: "string" }
+          - { label: "Título de portada", name: "hero_title", widget: "text" }
+          - { label: "Subtítulo de portada", name: "hero_subtitle", widget: "text" }
+          - { label: "Ubicación", name: "location", widget: "string" }
+          - { label: "Disponibilidad", name: "availability", widget: "string" }
+          - { label: "Formatos", name: "formats", widget: "string" }
+          - { label: "Email de contacto", name: "email", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string" }
+
+  - name: "about"
+    label: "Sobre mí"
+    files:
+      - file: "content/about.json"
+        label: "Sobre mí"
+        name: "about"
+        fields:
+          - { label: "Foto de perfil", name: "photo", widget: "image", required: false }
+          - { label: "Texto", name: "text", widget: "text" }
+          - { label: "Firma", name: "signature", widget: "string" }
+
+  - name: "gallery"
+    label: "Galería"
+    files:
+      - file: "content/gallery.json"
+        label: "Fotos de la galería"
+        name: "gallery"
+        fields:
+          - label: "Fotos"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Foto", name: "image", widget: "image" }
+              - { label: "Descripción corta", name: "caption", widget: "string", required: false }
+              - label: "Tamaño en la cuadrícula"
+                name: "size"
+                widget: "select"
+                options: ["normal", "grande"]
+                default: "normal"
+
+  - name: "blog"
+    label: "Blog"
+    files:
+      - file: "content/blog.json"
+        label: "Entradas del blog"
+        name: "blog"
+        fields:
+          - label: "Entradas"
+            name: "posts"
+            widget: "list"
+            fields:
+              - { label: "Imagen", name: "image", widget: "image", required: false }
+              - { label: "Fecha", name: "date", widget: "string" }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Resumen", name: "excerpt", widget: "text" }
